@@ -26,7 +26,7 @@ struct ContentView: View {
                     
                 }
             }
-            .searchable(text: $serachText, suggestions: {
+            .searchable(text: $serachText,prompt: "Ara...", suggestions: {
                 ForEach(searchResults, id: \.self) { result in
                     Text("Aradığınız kelime... \(result)?").searchCompletion(result)
                 }
