@@ -18,10 +18,19 @@ struct ContentView: View {
 //                .padding()
             List{
                 ForEach(searchResults, id: \.self) { word in
-                    Text(word)
+                    
+                    NavigationLink(destination: Text(word)){
+                        Text(word)
+                    }
+                    
+                    
                 }
             }
-            .searchable(text: $serachText)
+            .searchable(text: $serachText, suggestions: {
+                ForEach(searchResults, id: \.self) { result in
+                    Text("Aradığınız kelime... \(result)?").searchCompletion(result)
+                }
+            })
             .navigationTitle("Menü")
         }
     }
